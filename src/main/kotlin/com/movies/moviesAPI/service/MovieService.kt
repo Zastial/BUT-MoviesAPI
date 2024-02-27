@@ -17,7 +17,7 @@ class MovieService : IMovieService {
         )
     }
 
-    override fun getMovieById(id : Int): Movie {
+    override fun getMovieById(id : Int): Movie? {
         val movies : List<Movie> = listOf(
                 Movie(1, "Titanic", "2024-02-27"),
                 Movie(2, "Moi, moche et méchant", "2021-12-05"),
@@ -28,7 +28,11 @@ class MovieService : IMovieService {
                 Movie(7, "Tous au five", "2012-06-09"),
         )
 
-        val movieById = movies.filter { it.Id == id }
-        return movieById[0]
+        movies.forEach { movie ->
+            if (movie.Id == id) {
+                return movie
+            }
+        }
+        return null
     }
 }
