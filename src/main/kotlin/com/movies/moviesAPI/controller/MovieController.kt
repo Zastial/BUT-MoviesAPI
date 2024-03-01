@@ -13,10 +13,10 @@ data class Movie(val Id : Int, val name : String, val month: Int, val year : Int
 @Validated
 class MovieController(val movieService : IMovieService) {
 
-    @GetMapping("/movies")
+    @GetMapping("api/v1/movies")
     fun getMovies() = movieService.getMovies()
 
-    @GetMapping("/movies/{movieId}")
+    @GetMapping("api/v1/movies/{movieId}")
     fun getMovieById(@PathVariable movieId : Int) = movieService.getMovieById(movieId)
 
 }
